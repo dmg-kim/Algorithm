@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class A_정수론_03_유클리드호제법_기본개념 {
+public class A_정수론_유클리드호제법_기본개념 {
 	/*
 	 * [유클리드 호제법]
 	 * 정수 A, B (A > B)

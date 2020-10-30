@@ -12,26 +12,6 @@ public class Main {
 	static int Group[];
 	static boolean Checked[];
 	static long Answer; 
-	
-	
-	static class Edge implements Comparable<Edge>  {
-		int no;
-		int start;
-		int end;
-		int cost;
-		
-		Edge(int no, int start, int end, int cost) {
-			this.no = no;
-			this.start = start;
-			this.end = end;
-			this.cost = cost;
-		}
-
-		@Override
-		public int compareTo(Edge e) {
-			return this.cost - e.cost;
-		}
-	}
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -78,7 +58,6 @@ public class Main {
 			
 			for (int j = 1; j <= N; j++) {
 				Group[j] = j;
-				
 			}
 			
 			for (int j = 1; j <= M; j++) {
@@ -87,7 +66,7 @@ public class Main {
 			
 			for (Edge f: eList) {
 				if(now == f.no) {
-					Union(f.start, f.end);
+					Union(f.from, f.to);
 					Answer += f.cost;
 					connCnt++;
 					Checked[f.no] = true;
@@ -100,8 +79,8 @@ public class Main {
 				
 				if(!Checked[e.no]) {
 				
-					if(Find(e.start) != Find(e.end)) {
-						Union(e.start, e.end);
+					if(Find(e.from) != Find(e.to)) {
+						Union(e.from, e.to);
 						Answer += e.cost;
 						connCnt++;
 						if(connCnt == N -1) {
@@ -125,7 +104,23 @@ public class Main {
 		else 
 			return Group[n] = Find(Group[n]); 
 	}
+	
+	static class Edge implements Comparable<Edge>  {
+		int no;
+		int from;
+		int to;
+		int cost;
+		
+		Edge(int no, int from, int to, int cost) {
+			this.no = no;
+			this.from = from;
+			this.to = to;
+			this.cost = cost;
+		}
 
-
-
+		@Override
+		public int compareTo(Edge e) {
+			return this.cost - e.cost;
+		}
+	}
 }
