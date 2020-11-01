@@ -26,16 +26,7 @@ public class A_PQ_±âº»°³³ä {
 		}
 		System.out.println();
 		
-		PriorityQueue<Integer> pq2 = new PriorityQueue<Integer>(new Comparator<Integer>() {
-			@Override
-			public int compare(Integer i1, Integer i2) {
-				// TODO Auto-generated method stub
-				return i2 - i1;
-			}
-			
-		});
-		
-	
+		PriorityQueue<Integer> pq2 = new PriorityQueue<Integer>(Collections.reverseOrder());
 		pq2.offer(2);
 		pq2.offer(7);
 		pq2.offer(3);
@@ -46,6 +37,27 @@ public class A_PQ_±âº»°³³ä {
 		
 		while(!pq2.isEmpty()) {
 			System.out.print(pq2.poll() + " " );
+		}
+		System.out.println();
+		
+		PriorityQueue<Integer> pq3 = new PriorityQueue<Integer>(new Comparator<Integer>() {
+			@Override
+			public int compare(Integer i1, Integer i2) {
+				// TODO Auto-generated method stub
+				return i2 - i1;
+			}
+			
+		});
+		pq3.offer(2);
+		pq3.offer(7);
+		pq3.offer(3);
+		pq3.offer(4);
+		pq3.offer(9);
+		pq3.offer(1);
+		pq3.offer(6);
+		
+		while(!pq3.isEmpty()) {
+			System.out.print(pq3.poll() + " " );
 		}
 		
 	}
