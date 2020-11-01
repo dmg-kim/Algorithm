@@ -1,31 +1,87 @@
 package b1_3_자료구조_완전이진트리;
 
+import java.util.*;
+
 public class A_완전이진트리_기본개념 {
 	/*
-	 * [트리(Tree)]
-	 *  - 그래프의 일종
-	 *  - 특수한 조건을 만족하는 그래프
-	 *  - 용어
-	 *   . 루트 노드(root): 부모 노드가 없는 트리의 최상위 노드
-	 *   . 부모 노드: 자신보다 상위에 있는 노드
-	 *   . 자식 노드: 자신보다 하위에 있는 노드
-	 *   . 단말 노드(leaf): 자식이 없는 최하위 노드
-	 *   . 형재 노드: 같은 부모를 갖는 노드
-	 *   . 조상 노드: 해당 노드에서 루트 노느까지 가는 경로에 있는 모든 노드
-	 *   . 자손 노드: 자신의 자식 노드와 그 자식 노드들
-	 *   . 깊이: 루트 노드에서 해당 노드까지의 거리
-	 *   . 높이: 트리에서 가장 깊이 있는 노드의 깊이
-	 *  - 그래프와의 차이점, 트리의 특징
-	 *   . 루트 노드 존재
-	 *   . 사이클 존재X
-	 *   . 어떤 정점에서 다른 저점으로 가는 경로가 유일함
-	 *   . 정점의 수를 V라 하면 간선의 수는 V-1
-	 *   . 루트 노드를 제외한 모든 노드의 입력 차수(in-degree)는 1
-	 *   . 트리는 재귀적 속성을 가짐  
-	 */
+	 * [완전이진트리(Complete Binary Tree)]
+	 *  - 이진트리의 한 종류
+	 *  - 마지막 레벨을 제외하고는 모든 노드가 꽉 채워져 있고,
+	 *    마지막 레벨은 노드가 가장 왼쪽부터 빈칸 없이 채워져 있는 형태의 트리
+	 *  - 이진 트리는 1차원 배열로 표현 가능
+	 *   . Parent: x/2
+	 *   . left_child: x*2
+	 *   . right_child: x*2 +1 
+	 *  - 트리 순회(Tree Traversal)
+	 *   1. 전위 순회(pre-order): 루트 - 왼쪽 - 오른쪽 순
+	 *   2. 중위 순회(in-order): 왼쪽 - 루트  - 오른쪽
+	 *   3. 후위 순회(post-order): 왼쪽 - 오른쪽 - 루트
+	 *   
+	 *  <예제> N개의 트리 데이터가 입력되었을 때 트리를 중위순회하는 코드
+	 *  (input)
+	 *  9
+	 *  1 2 3 4 5 6 7 8 9
+	 *  (output)
+	 *  4 2 5 1 6 3 
+	 *       1
+	 *    2      3
+	 *  4   5  6   7
+	 * 8 9 
+	 */  
+	static int n;
+	static int tree[];
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		
+		Scanner sc = new Scanner(System.in);
+		
+		n = sc.nextInt();
+		tree = new int[n+1];
+		
+		for (int i = 1; i <= n; i++) {
+			tree[i] = sc.nextInt();
+		}
 
+		System.out.println("1. 전위 순회");
+		preOrder(1);
+		System.out.println();
+		
+		System.out.println("2. 중위 순회");
+		inOrder(1);
+		System.out.println();
+
+		System.out.println("3. 후위 순회");
+		postOrder(1);
+		System.out.println();
+	}
+
+	// 중위 순회
+	static void inOrder(int node) {
+		if(node > n) return;
+		
+		inOrder(node * 2);		
+		System.out.print(tree[node] + " ");		
+		inOrder(node * 2 + 1);
+	}
+	
+	// 전위 순휘
+	static void preOrder(int node) {
+		if(node > n) return;
+		
+		System.out.print(tree[node] + " ");
+		preOrder(node * 2);		
+		preOrder(node * 2 + 1);
+		
+	}
+	
+	// 후위 순휘
+	static void postOrder(int node) {
+		if(node > n) return;
+		
+		postOrder(node * 2);
+		postOrder(node * 2 + 1);
+		
+		System.out.print(tree[node] + " ");
 	}
 
 }
