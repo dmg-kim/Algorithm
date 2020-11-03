@@ -2,7 +2,7 @@ package b1_4_자료구조_구간트리;
 
 import java.util.*;
 
-public class A_02_인덱스트리_기본개념 {
+public class A_02_인덱스트리_기본개념_최소값 {
 	/*
 	 * [인덱스 트리(Indexed Tree)]
 	 *  - 포화이진트리 모양의 자료구조
