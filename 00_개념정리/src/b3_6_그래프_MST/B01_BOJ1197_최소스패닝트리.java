@@ -6,9 +6,6 @@ import java.util.*;
 public class B01_BOJ1197_최소스패닝트리 {
 	/*
 	 * https://www.acmicpc.net/problem/1197
-	 * 
-	 * 
-	 * 
 	 */
 	
 	static int V, E;
