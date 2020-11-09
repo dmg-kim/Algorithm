@@ -7,7 +7,7 @@ public class B09_BOJ15481_그래프와MST_프림_LCA {
 	/*
 	 * https://www.acmicpc.net/problem/15481
 	 * 
-	 * 
+	 * https://salepark.tistory.com/53
 	 * 
 	 */
 	static int N, M;
@@ -120,21 +120,21 @@ public class B09_BOJ15481_그래프와MST_프림_LCA {
 		
 		for (int j = MAX_D - 1; j >= 0; j--) {
 			if((1 << j) <= (depth[u] - depth[v])) {
-				u = parent[u][j];
 				maxVal = Math.max(maxVal, maxArr[u][j]);
+				u = parent[u][j];				
 			}
 		}
 		
-		if(u == v) return u;
+		if(u == v) return maxVal;
 		
 		for (int j = MAX_D - 1; j >= 0; j--) {
 			if(parent[u][j] != parent[v][j]) {
-				u = parent[u][j];
-				v = parent[v][j];
 				maxVal = Math.max(maxVal, Math.max(maxArr[u][j], maxArr[v][j]));
+				u = parent[u][j];
+				v = parent[v][j];				
 			}
 		}
-		return maxVal;
+		return maxVal = Math.max(maxVal,Math.max(maxArr[u][0], maxArr[v][0]));
 	}
 
 	public static void buildTree() {
