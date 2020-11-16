@@ -1,4 +1,4 @@
-package b3_6_그래프_MST;
+package b3_6_그래프_유니온파인드;
 
 public class A_유니온파인드_기본개념 {
 	/*
@@ -17,7 +17,8 @@ public class A_유니온파인드_기본개념 {
 		
 		Union(1, 2);
 		
-		Find(1);	}
+		Find(1);	
+	}
 
 	private static int Find(int n) {
 		if(Group[n] == n) return n;

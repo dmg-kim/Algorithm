@@ -2,7 +2,7 @@ package a00_알고리즘기초;
 
 import java.util.*;
 
-public class SDS_연속부분최대합 {
+public class SDS_연속부분최대합_투포인터 {
 
 	public static void main(String[] args) {
 		Scanner sc = new  Scanner(System.in);

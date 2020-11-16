@@ -1,4 +1,4 @@
-package b3_8_그래프_LCA;
+package b3_9_그래프_LCA;
 
 import java.io.*;
 import java.util.*;

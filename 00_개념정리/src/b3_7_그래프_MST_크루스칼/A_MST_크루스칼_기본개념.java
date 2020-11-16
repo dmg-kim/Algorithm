@@ -1,4 +1,4 @@
-package b3_6_그래프_MST;
+package b3_7_그래프_MST_크루스칼;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

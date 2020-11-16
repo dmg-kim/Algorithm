@@ -30,7 +30,7 @@ public class A_BFS_±âº»°³³ä {
 		eList[1].add(new Edge(1, 4));
 		eList[2].add(new Edge(2, 5));
 		eList[3].add(new Edge(3, 5));
-		eList[3].add(new Edge(5, 6));
+		eList[5].add(new Edge(5, 6));
 		eList[4].add(new Edge(4, 6));
 		eList[6].add(new Edge(6, 7));
 		

@@ -1,4 +1,4 @@
-package b3_7_그래프_위상정렬;
+package b3_8_그래프_위상정렬;
 
 public class A_위상정렬_기본개념 {
 
