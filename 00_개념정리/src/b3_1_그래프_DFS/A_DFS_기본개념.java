@@ -16,6 +16,7 @@ public class A_DFS_±âº»°³³ä {
 	
 	static ArrayList<Edge> eList[] = new ArrayList[10];
 	static boolean visited[] = new boolean[10];
+	static int order;
 	public static void main(String[] args) {
 		
 		for (int i = 0; i < eList.length; i++) {
@@ -31,24 +32,27 @@ public class A_DFS_±âº»°³³ä {
 		eList[4].add(new Edge(4, 6));
 		eList[6].add(new Edge(6, 7));
 		
-		DFS(1);
+		order = 1;
+		DFS(1, order);
 	}
 	
-	private static void DFS(int n) {	
+	private static int DFS(int n, int order) {	
 		int cur = n;		
 		
-		if(visited[cur]) return;		
+		if(visited[cur]) return order;		
 		visited[cur] = true;
 		
-		System.out.print(cur + "->");		
+		System.out.print(cur +"(" + order + ") ->");		
 		
 		int next;
 		for (Edge e : eList[cur]) {
 			next = e.next;
 			if(!visited[next]) {
-				DFS(next);
+				order = DFS(next, order+1);
 			}
 		}
+//		System.out.print(order + ")");
+		return order;
 	}
 
 	static class Edge {

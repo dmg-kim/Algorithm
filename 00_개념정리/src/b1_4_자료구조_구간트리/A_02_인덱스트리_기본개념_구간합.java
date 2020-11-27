@@ -38,6 +38,7 @@ public class A_02_인덱스트리_기본개념_구간합 {
 1 1 3
 0 2 6
 1 1 3
+
 	 *  (output)
 9
 14
@@ -77,7 +78,7 @@ public class A_02_인덱스트리_기본개념_구간합 {
 		
 		buildTree();
 		
-		checkTree();
+//		checkTree();
 		
 		int a, b, c;
 		for (int i = 1; i <= M; i++) {
@@ -92,33 +93,20 @@ public class A_02_인덱스트리_기본개념_구간합 {
 				update(b, c);
 				//checkTree();
 			}
-			checkTree();
+//			checkTree();
 		}
 	}
 	
-	private static long getSum(int start, int end) {
-		long sum = 0L;
-		
-		start = leaf - 1 + start;
-		end = leaf - 1 + end;
-		
-		while(start <= end) {
-			if(start % 2 == 1) {
-				sum += tree[start++];
-			}
-			if(end  % 2 == 0) {
-				sum += tree[end--];
-			}
-			
-			start >>= 1;
-			end >>= 1;
+	public static void buildTree() {
+		int index = leaf - 1;
+		// 리프 노드 셋팅
+		for (int i = 1; i <= N; i++) {
+			tree[index + i] = data[i];
 		}
-		return sum;
-	}
-	
-	public static void checkTree() {
-		for (int i = 1; i <= 2 * leaf; i++) {
-			System.out.print(tree[i] + " ");
+		
+		// 각 바로 이전(리프 바로 위의 제일 끝 노드)에서 루트까지 업데이트
+		for (int i = index; i >= 1; i--) {
+			tree[i] = tree[i * 2] + tree[(i * 2) + 1];
 		}
 	}
 	
@@ -132,17 +120,33 @@ public class A_02_인덱스트리_기본개념_구간합 {
 			
 			index >>= 1;
 		}
-		
 	}
 	
-	public static void buildTree() {
-		int index = leaf - 1;
-		for (int i = 1; i <= N; i++) {
-			tree[index + i] = data[i];
-		}
+	private static long getSum(int start, int end) {
+		long sum = 0L;
 		
-		for (int i = index; i >= 1; i--) {
-			tree[i] = tree[i * 2] + tree[(i * 2) + 1];
+		start = leaf - 1 + start;
+		end = leaf - 1 + end;
+		
+		while(start <= end) {
+			// start는 홀수 일때 해당 노드값 더해주고 다음 노드로
+			if(start % 2 == 1) {
+				sum += tree[start++];
+			}
+			// end는 짝수 일때 해당 노드값 더해주고 이전 노드로
+			if(end  % 2 == 0) {
+				sum += tree[end--];
+			}
+			
+			start >>= 1;
+			end >>= 1;
+		}
+		return sum;
+	}
+	
+	public static void checkTree() {
+		for (int i = 1; i <= 2 * leaf; i++) {
+			System.out.print(tree[i] + " ");
 		}
 	}
 }

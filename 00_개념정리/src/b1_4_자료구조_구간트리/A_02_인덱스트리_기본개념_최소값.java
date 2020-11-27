@@ -83,6 +83,15 @@ public class A_02_인덱스트리_기본개념_최소값 {
 			}
 		}
 	}
+	
+	public static void update(int x, int y) {
+		tree[leaf - 1 + x] = y;
+		x = (leaf - 1 + x) / 2;
+		while(x > 0) {
+			tree[x] = Math.min(tree[x * 2], tree[x * 2 + 1]);
+			x /= 2;
+		}
+	}
 
 	public static void get(int x, int y) {
 		int min = INF;		
@@ -101,14 +110,5 @@ public class A_02_인덱스트리_기본개념_최소값 {
 		}
 		
 		System.out.println(min);
-	}
-
-	public static void update(int x, int y) {
-		tree[leaf - 1 + x] = y;
-		x = (leaf - 1 + x) / 2;
-		while(x > 0) {
-			tree[x] = Math.min(tree[x * 2], tree[x * 2 + 1]);
-			x /= 2;
-		}
 	}
 }
